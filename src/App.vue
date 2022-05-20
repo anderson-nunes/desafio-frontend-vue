@@ -29,7 +29,10 @@
       <div class="space-md"></div>
       <div class="label">Observações:</div>
       <div class="space"></div>
-      <textarea name="descricao" id="" cols="30" rows="10"></textarea>
+      <textarea
+        name="descricao"
+        placeholder="Alguma dúvida? Recado?"
+      ></textarea>
       <div class="space-md"></div>
       <Button @click="validarDados">
         <template #label>Enviar</template>
