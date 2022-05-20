@@ -12,10 +12,10 @@ export default {};
 
 <style scoped>
 .header {
-  /* background-image: url("../assets/header.png"); */
+  background-image: url("../../assets/header.png");
   background-size: cover;
   height: 187px;
-  padding: 23px 36px;
+  /* padding: 23px 36px; */
   width: 100%;
 }
 
@@ -23,6 +23,7 @@ export default {};
   color: #fff;
   font-size: 23px;
   font-weight: 300;
+  padding: 23px 36px;
 }
 
 .header .title span {

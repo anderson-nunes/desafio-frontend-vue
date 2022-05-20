@@ -1,32 +1,36 @@
 <template>
   <div id="container">
-    <Header/>
-    <h2>Quais stickers:</h2>
-    <CheckBox :value="react" @on-change="(newValue) => (react = newValue)">
-      React
-    </CheckBox>
-    <CheckBox :value="vue" @on-change="(newValue) => (vue = newValue)">
-      Vue
-    </CheckBox>
-    <CheckBox :value="angular" @on-change="(newValue) => (angular = newValue)">
-      Angular
-    </CheckBox>
-    <h2>Quantos stickers de cada?</h2>
-    <Contador
-      :value="0"
-      :isError="false"
-      @aumentar="(v) => {}"
-      @diminuir="(v) => {}"
-    />
-    <Button @click="validarDados">
-      <template #label>Enviar</template>
-    </Button>
+    <Header />
+    <div id="form">
+      <h2>Quais stickers:</h2>
+      <CheckBox :value="react" @on-change="(newValue) => (react = newValue)">
+        React
+      </CheckBox>
+      <CheckBox :value="vue" @on-change="(newValue) => (vue = newValue)">
+        Vue
+      </CheckBox>
+      <CheckBox
+        :value="angular"
+        @on-change="(newValue) => (angular = newValue)"
+      >
+        Angular
+      </CheckBox>
+      <h2>Quantos stickers de cada?</h2>
+      <Contador
+        :value="0"
+        :isError="false"
+        @aumentar="(v) => {}"
+        @diminuir="(v) => {}"
+      />
+      <Button @click="validarDados">
+        <template #label>Enviar</template>
+      </Button>
+    </div>
   </div>
 </template>
 
 <script>
-
-import Header from "./components/Header/Header.vue"
+import Header from "./components/Header/Header.vue";
 import CheckBox from "./components/CheckBox/CheckBox.vue";
 import Contador from "./components/Contador/Contador.vue";
 import Button from "./components/Button/Button.vue";
@@ -37,7 +41,7 @@ export default {
     CheckBox,
     Contador,
     Button,
-    Header
+    Header,
   },
 
   data() {
@@ -64,5 +68,9 @@ export default {
   margin: 20px auto;
   overflow: hidden;
   width: 550px;
+}
+
+#form {
+  padding: 0px 32px;
 }
 </style>
