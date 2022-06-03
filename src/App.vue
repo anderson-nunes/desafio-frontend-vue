@@ -34,6 +34,8 @@
         placeholder="Alguma dúvida? Recado?"
       ></textarea>
       <div class="space-md"></div>
+    </div>
+    <div class="footer">
       <Button @click="validarDados">
         <template #label>Enviar</template>
       </Button>
@@ -116,5 +118,14 @@ export default {
 
 .space {
   margin-bottom: 16px;
+}
+
+.footer {
+  height: 60px;
+  padding: 0 32px;
+  background: #dde3e9;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 </style>
