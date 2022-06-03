@@ -15,7 +15,6 @@ export default {};
   background-image: url("../../assets/header.png");
   background-size: cover;
   height: 187px;
-  /* padding: 23px 36px; */
   width: 100%;
 }
 
