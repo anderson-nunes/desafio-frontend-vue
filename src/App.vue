@@ -66,7 +66,7 @@ export default {
 
   methods: {
     validarDados() {
-      console.log("okkk");
+      alert("dados enviados");
     },
   },
 };
