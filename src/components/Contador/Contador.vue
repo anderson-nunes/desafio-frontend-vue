@@ -13,7 +13,11 @@
           <path d="M19 13H5v-2h14v2z" /></svg
       ></template>
     </Button>
-    <input :value="contador" class="input" type="text" />
+    <input
+      :value="contador"
+      :class="['input', { error: isError }]"
+      type="text"
+    />
     <Button @click="aumentar">
       <template #label
         ><svg
@@ -97,5 +101,9 @@ button {
   padding: 8px;
   text-align: center;
   height: 24px;
+}
+
+.input.error {
+  background: #f59393;
 }
 </style>

@@ -31,7 +31,7 @@
       <div class="space"></div>
       <Contador
         :value="contadorValue"
-        :isError="false"
+        :isError="isContadorError"
         @aumentar="(v) => (contadorValue = v)"
         @diminuir="(v) => (contadorValue = v)"
       />
@@ -76,19 +76,22 @@ export default {
       contadorValue: 0,
       descricao: "",
       isCheckboxError: false,
+      isContadorError: false,
     };
   },
 
   methods: {
     validarDados() {
-      if(this.react || this.vue || this.angular) {
-        this.isCheckboxError = false
+      if (this.react || this.vue || this.angular) {
+        this.isCheckboxError = false;
       } else {
-        this.isCheckboxError = true
+        this.isCheckboxError = true;
       }
-    },
-    printValue(contador) {
-      console.log(contador);
+      if (this.contadorValue > 0) {
+        this.isContadorError = false;
+      } else {
+        this.isContadorError = true;
+      }
     },
   },
 };
