@@ -2,7 +2,7 @@
   <label>
     <slot />
     <input class="checkbox" type="checkbox" v-model="checked" />
-    <span class="checkmark" :class="{ error: isError }"></span>
+    <span :class="['checkmark', { error: isError }]"></span>
   </label>
 </template>
 
