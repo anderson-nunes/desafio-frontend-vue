@@ -5,13 +5,22 @@
     <div class="form">
       <div class="label">Quais stickers:</div>
       <div class="space"></div>
-      <CheckBox :value="react" @on-change="(newValue) => (react = newValue)">
+      <CheckBox
+        :isError="isCheckboxError"
+        :value="react"
+        @on-change="(newValue) => (react = newValue)"
+      >
         React
       </CheckBox>
-      <CheckBox :value="vue" @on-change="(newValue) => (vue = newValue)">
+      <CheckBox
+        :isError="isCheckboxError"
+        :value="vue"
+        @on-change="(newValue) => (vue = newValue)"
+      >
         Vue
       </CheckBox>
       <CheckBox
+        :isError="isCheckboxError"
         :value="angular"
         @on-change="(newValue) => (angular = newValue)"
       >
@@ -21,15 +30,16 @@
       <div class="label">Quantos stickers de cada?</div>
       <div class="space"></div>
       <Contador
-        :value="0"
+        :value="contadorValue"
         :isError="false"
-        @aumentar="(v) => {}"
-        @diminuir="(v) => {}"
+        @aumentar="(v) => (contadorValue = v)"
+        @diminuir="(v) => (contadorValue = v)"
       />
       <div class="space-md"></div>
       <div class="label">Observações:</div>
       <div class="space"></div>
       <textarea
+        v-model="descricao"
         name="descricao"
         placeholder="Alguma dúvida? Recado?"
       ></textarea>
@@ -63,12 +73,22 @@ export default {
       react: false,
       vue: false,
       angular: false,
+      contadorValue: 0,
+      descricao: "",
+      isCheckboxError: false,
     };
   },
 
   methods: {
     validarDados() {
-      alert("dados enviados");
+      if(this.react || this.vue || this.angular) {
+        this.isCheckboxError = false
+      } else {
+        this.isCheckboxError = true
+      }
+    },
+    printValue(contador) {
+      console.log(contador);
     },
   },
 };

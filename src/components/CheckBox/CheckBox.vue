@@ -2,7 +2,7 @@
   <label>
     <slot />
     <input class="checkbox" type="checkbox" v-model="checked" />
-    <span class="checkmark"></span>
+    <span class="checkmark" :class="{ error: isError }"></span>
   </label>
 </template>
 
@@ -15,6 +15,10 @@ export default {
   },
   props: {
     value: {
+      type: Boolean,
+      default: false,
+    },
+    isError: {
       type: Boolean,
       default: false,
     },
@@ -85,7 +89,7 @@ label .checkmark:after {
   transform: rotate(45deg);
 }
 
-label:has(.checkmark) {
-  background-color: red;
+label .checkmark.error {
+  background-color: #f59393;
 }
 </style>

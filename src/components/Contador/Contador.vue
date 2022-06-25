@@ -64,11 +64,13 @@ export default {
   methods: {
     aumentar() {
       this.contador = this.contador + 1;
+      this.$emit("aumentar", this.contador);
     },
 
     diminuir() {
       if (this.contador > 0) {
         this.contador = this.contador - 1;
+        this.$emit("diminuir", this.contador);
       }
     },
   },
