@@ -6,23 +6,23 @@
       <div class="label">Quais stickers:</div>
       <div class="space"></div>
       <CheckBox
-        :isError="isCheckboxError"
-        :value="react"
-        @on-change="(newValue) => (react = newValue)"
+        :isError="form.isCheckboxError"
+        :value="form.react"
+        @on-change="(newValue) => (form.react = newValue)"
       >
         React
       </CheckBox>
       <CheckBox
-        :isError="isCheckboxError"
-        :value="vue"
-        @on-change="(newValue) => (vue = newValue)"
+        :isError="form.isCheckboxError"
+        :value="form.vue"
+        @on-change="(newValue) => (form.vue = newValue)"
       >
         Vue
       </CheckBox>
       <CheckBox
-        :isError="isCheckboxError"
-        :value="angular"
-        @on-change="(newValue) => (angular = newValue)"
+        :isError="form.isCheckboxError"
+        :value="form.angular"
+        @on-change="(newValue) => (form.angular = newValue)"
       >
         Angular
       </CheckBox>
@@ -30,16 +30,16 @@
       <div class="label">Quantos stickers de cada?</div>
       <div class="space"></div>
       <Contador
-        :value="contadorValue"
-        :isError="isContadorError"
-        @aumentar="(v) => (contadorValue = v)"
-        @diminuir="(v) => (contadorValue = v)"
+        :value="form.contadorValue"
+        :isError="form.isContadorError"
+        @aumentar="(v) => (form.contadorValue = v)"
+        @diminuir="(v) => (form.contadorValue = v)"
       />
       <div class="space-md"></div>
       <div class="label">Observações:</div>
       <div class="space"></div>
       <textarea
-        v-model="descricao"
+        v-model="form.descricao"
         name="descricao"
         placeholder="Alguma dúvida? Recado?"
       ></textarea>
@@ -70,27 +70,38 @@ export default {
 
   data() {
     return {
-      react: false,
-      vue: false,
-      angular: false,
-      contadorValue: 0,
-      descricao: "",
-      isCheckboxError: false,
-      isContadorError: false,
+      form: {
+        react: false,
+        vue: false,
+        angular: false,
+        contadorValue: 0,
+        descricao: "",
+        isCheckboxError: false,
+        isContadorError: false,
+      },
     };
+  },
+
+  watch: {
+    form: {
+      handler() {
+        this.validarDados();
+      },
+      deep: true,
+    },
   },
 
   methods: {
     validarDados() {
-      if (this.react || this.vue || this.angular) {
-        this.isCheckboxError = false;
+      if (this.form.react || this.form.vue || this.form.angular) {
+        this.form.isCheckboxError = false;
       } else {
-        this.isCheckboxError = true;
+        this.form.isCheckboxError = true;
       }
-      if (this.contadorValue > 0) {
-        this.isContadorError = false;
+      if (this.form.contadorValue > 0) {
+        this.form.isContadorError = false;
       } else {
-        this.isContadorError = true;
+        this.form.isContadorError = true;
       }
     },
   },
