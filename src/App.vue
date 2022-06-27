@@ -45,8 +45,9 @@
       ></textarea>
       <div class="space-md"></div>
     </div>
-    <div class="footer">
-      <Button @click="validarDados">
+    <div :class="['footer', { message: form.showDadosEnviados }]">
+      <p v-show="form.showDadosEnviados">Dados Enviados!!!</p>
+      <Button @click="enviarDados">
         <template #label>Enviar</template>
       </Button>
     </div>
@@ -78,6 +79,7 @@ export default {
         descricao: "",
         isCheckboxError: false,
         isContadorError: false,
+        showDadosEnviados: false,
       },
     };
   },
@@ -102,6 +104,15 @@ export default {
         this.form.isContadorError = false;
       } else {
         this.form.isContadorError = true;
+      }
+
+      return !this.form.isCheckboxError && !this.form.isContadorError;
+    },
+    enviarDados() {
+      if (this.validarDados()) {
+        this.form.showDadosEnviados = true;
+      } else {
+        this.form.showDadosEnviados = false;
       }
     },
   },
@@ -159,7 +170,11 @@ export default {
   padding: 0 32px;
   background: #dde3e9;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.footer.message {
+  justify-content: space-between;
 }
 </style>
