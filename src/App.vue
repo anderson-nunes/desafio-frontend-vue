@@ -172,6 +172,8 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: rgb(77, 224, 77);
+  font-size: 30px;
 }
 
 .footer.message {
