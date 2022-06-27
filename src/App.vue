@@ -47,6 +47,9 @@
     </div>
     <div :class="['footer', { message: form.showDadosEnviados }]">
       <p v-show="form.showDadosEnviados">Dados Enviados!!!</p>
+      <p class="error-dados" v-show="form.showDadosNaoEnviados">
+        Preencher os Dados!!
+      </p>
       <Button @click="enviarDados">
         <template #label>Enviar</template>
       </Button>
@@ -80,6 +83,7 @@ export default {
         isCheckboxError: false,
         isContadorError: false,
         showDadosEnviados: false,
+        showDadosNaoEnviados: false,
       },
     };
   },
@@ -178,5 +182,9 @@ export default {
 
 .footer.message {
   justify-content: space-between;
+}
+
+.error-dados {
+  color: #f59393;
 }
 </style>
